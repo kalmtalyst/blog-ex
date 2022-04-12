@@ -8,14 +8,21 @@ function App() {
     "서울 맛집",
   ]);
   let [likes, setLikes] = useState(0);
+  let [modal, setModal] = useState(false);
   const addLike = () => {
     setLikes(likes + 1);
+  };
+  const editTitle = () => {
+    let newTitle = [...title];
+    newTitle[0] = "팝업스토어 방문기";
+    setTitle(newTitle);
   };
   return (
     <div className="App">
       <section className="nav-bar">
         <h1>Blog</h1>
       </section>
+      <button onClick={editTitle}>수정</button>
       <section>
         <div className="post-list">
           <h3>
@@ -32,12 +39,23 @@ function App() {
           <hr />
         </div>
         <div className="post-list">
-          <h3>{title[2]}</h3>
+          <h3 onClick={() => setModal(true)}>{title[2]}</h3>
           <p>4월 11일 발행</p>
           <hr />
         </div>
       </section>
+      {modal === true ? <Modal title={title}></Modal> : null}
     </div>
+  );
+}
+
+function Modal({ title }) {
+  return (
+    <section className="modal">
+      <h2>{title}</h2>
+      <p>날짜</p>
+      <p>상세 내용</p>
+    </section>
   );
 }
 
