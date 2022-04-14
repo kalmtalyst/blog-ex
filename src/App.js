@@ -24,27 +24,19 @@ function App() {
       </section>
       <button onClick={editTitle}>수정</button>
       <section>
-        <div className="post-list">
-          <h3>
-            {title[0]}
-            <span onClick={addLike}> 👍 </span>
-            {likes}
-          </h3>
-          <p>3월 5일 발행</p>
-          <hr />
-        </div>
-        <div className="post-list">
-          <h3>{title[1]}</h3>
-          <p>4월 10일 발행</p>
-          <hr />
-        </div>
-        <div className="post-list">
-          <h3 onClick={() => setModal(true)}>{title[2]}</h3>
-          <p>4월 11일 발행</p>
-          <hr />
-        </div>
+        {title.map((title) => (
+          <div className="post-list" key={title}>
+            <h3>
+              {title}
+              <span onClick={addLike}> 👍 </span>
+              {likes}
+            </h3>
+            <p>3월 5일 발행</p>
+            <hr />
+          </div>
+        ))}
       </section>
-      {modal === true ? <Modal title={title}></Modal> : null}
+      {/* {modal === true ? <Modal title={title}></Modal> : null} */}
     </div>
   );
 }
