@@ -3,6 +3,7 @@
 }
 body {
   font-family: 'nanumsquare';
+  background-color: #F6FFA4;
 }
 .nav-bar {
   display: flex;
@@ -11,10 +12,14 @@ body {
   color: #ffffff;
   font-weight: 600;
   font-size: 20px;
-  background-color: black;
+  background-color: #FF008E;
 }
 .nav-bar h1 {
   margin: 0;
+}
+.post-box {
+  width: 960px;
+  margin: 0 auto;
 }
 .post-list {
   margin-top: 30px;
@@ -23,8 +28,43 @@ body {
   padding-right: 20px;
 }
 .modal {
-  width: 100%;
-  margin-top: 20px;;
+  margin: 0 auto 50px;
+  width: 500px;
   padding: 20px;
-  background: beige;
+  color: #ffffff;
+  background: #5800FF;
+}
+.closing-btn {
+  margin: 50px 20px;
+  width: 100px;
+  height: 50px;
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: #7900FF;
+}
+.write-box {
+  margin: 50px auto 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.write-box input {
+  box-sizing: border-box;
+  width: 500px;
+  height: 50px;
+}
+.write-box button{
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  width: 100px;
+  height: 50px;
+  margin-left: 10px;
+  background: linear-gradient(127deg,#F900BF, #4700D8) ;
+
 }

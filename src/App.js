@@ -10,6 +10,7 @@ function App() {
   let [likes, setLikes] = useState(0);
   let [modal, setModal] = useState(false);
   let [clickedTitle, setClickedTitle] = useState(0);
+  let [text, setNewText] = useState("");
 
   const addLike = () => {
     setLikes(likes + 1);
@@ -19,17 +20,23 @@ function App() {
     newTitle[0] = "팝업스토어 방문기";
     setTitle(newTitle);
   };
+
+  const addNewText = () => {
+    const copiedTitle = [...title];
+    copiedTitle.unshift(text);
+    setTitle(copiedTitle);
+  };
   return (
     <div className="App">
       <section className="nav-bar">
         <h1>Blog</h1>
       </section>
       <button onClick={editTitle}>제목 수정</button>
-      <section>
+      <section className="post-box">
         {title.map((title, i) => (
           <div
             className="post-list"
-            key={title}
+            key={i}
             onClick={(e) => {
               setModal(true);
               setClickedTitle(i);
@@ -66,7 +73,19 @@ function App() {
       >
         Button3
       </button> */}
+
+      <div className="write-box">
+        <input
+          type="text"
+          placeholder="내용을 입력하세요"
+          onChange={(e) => {
+            setNewText(e.target.value);
+          }}
+        />
+        <button onClick={addNewText}>저장</button>
+      </div>
       <button
+        className="closing-btn"
         onClick={() => {
           setModal(false);
         }}
