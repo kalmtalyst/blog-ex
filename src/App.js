@@ -9,6 +9,8 @@ function App() {
   ]);
   let [likes, setLikes] = useState(0);
   let [modal, setModal] = useState(false);
+  let [clickedTitle, setClickedTitle] = useState(0);
+
   const addLike = () => {
     setLikes(likes + 1);
   };
@@ -22,10 +24,17 @@ function App() {
       <section className="nav-bar">
         <h1>Blog</h1>
       </section>
-      <button onClick={editTitle}>수정</button>
+      <button onClick={editTitle}>제목 수정</button>
       <section>
-        {title.map((title) => (
-          <div className="post-list" key={title}>
+        {title.map((title, i) => (
+          <div
+            className="post-list"
+            key={title}
+            onClick={(e) => {
+              setModal(true);
+              setClickedTitle(i);
+            }}
+          >
             <h3>
               {title}
               <span onClick={addLike}> 👍 </span>
@@ -36,15 +45,45 @@ function App() {
           </div>
         ))}
       </section>
-      {/* {modal === true ? <Modal title={title}></Modal> : null} */}
+      {/* <button
+        onClick={() => {
+          setClickedTitle(0);
+        }}
+      >
+        Button1
+      </button>
+      <button
+        onClick={() => {
+          setClickedTitle(1);
+        }}
+      >
+        Button2
+      </button>
+      <button
+        onClick={() => {
+          setClickedTitle(2);
+        }}
+      >
+        Button3
+      </button> */}
+      <button
+        onClick={() => {
+          setModal(false);
+        }}
+      >
+        닫기
+      </button>
+      {modal === true ? (
+        <Modal title={title} clickedTitle={clickedTitle}></Modal>
+      ) : null}
     </div>
   );
 }
 
-function Modal({ title }) {
+function Modal({ title, clickedTitle }) {
   return (
     <section className="modal">
-      <h2>{title}</h2>
+      <h2>{title[clickedTitle]}</h2>
       <p>날짜</p>
       <p>상세 내용</p>
     </section>
